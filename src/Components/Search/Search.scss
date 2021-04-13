@@ -1,0 +1,16 @@
+@import '../../Styles/helpers.scss';
+
+.Search {
+  background: url('../../assets/icons/search.svg') no-repeat left;
+
+  &__input {
+    @include mainFont;
+    font-size: 12px;
+    margin-left: 15px;
+    padding: 15px;
+    width: 100%;
+    letter-spacing: 0.01em;
+    color: #90a0b7;
+    border: none;
+  }
+}

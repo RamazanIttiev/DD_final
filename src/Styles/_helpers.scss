@@ -1,0 +1,19 @@
+// Fonts
+$Montserrat: 'Montserrat', sans-serif;
+$Poppins: 'Poppins', sans-serif;
+$titleColor: #1d262c;
+
+@mixin mainFont {
+  font-family: $Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+@mixin title {
+  font-family: $Poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  color: $titleColor;
+}

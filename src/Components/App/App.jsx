@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../Header/Header';
+import Layout from '../Layout/Layout';
+import './App.scss';
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello</h1>
+    <div className="App">
+      <Header />
+      <Layout />
     </div>
   );
 };
