@@ -8,12 +8,21 @@ $pendingColor: rgba(242, 153, 74, 0.2);
 $pendingTextColor: #f2994a;
 $minorColor: #219653;
 $authorColor: #fbac65;
+$avatarBorder: #78cfdf;
+$messageBgr: #f3f3f3;
 
-@mixin mainFont {
+@mixin primaryFont {
   font-family: $Montserrat;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
+}
+
+@mixin secondaryFont {
+  font-family: $Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
 }
 
 @mixin title {
@@ -24,7 +33,7 @@ $authorColor: #fbac65;
   color: $titleColor;
 }
 
-@mixin subTitle {
+@mixin extraFont {
   font-family: $Poppins;
   font-style: normal;
   font-weight: 400;

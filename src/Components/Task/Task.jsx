@@ -1,6 +1,6 @@
 import React from 'react';
 import './Task.scss';
-import author from '../../assets/icons/user.png';
+import author from '../../assets/img/user.png';
 
 const Task = () => {
   return (
