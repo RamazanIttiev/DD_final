@@ -1,0 +1,72 @@
+@import '../../Styles/helpers.scss';
+
+.Task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    @include mainFont;
+    position: relative;
+    padding-left: 15px;
+
+    &:before {
+      @include taskBefore;
+    }
+    &::after {
+      @include taskAfter;
+    }
+  }
+
+  &__status {
+    @include mainFont;
+    font-size: 11px;
+    border-radius: 8.5px;
+    background: $pendingColor;
+    color: $pendingTextColor;
+    padding: 5px 17px;
+  }
+
+  &__importance {
+    @include mainFont;
+    position: relative;
+    font-size: 12px;
+    padding-left: 12px;
+    &::before {
+      @include taskBefore;
+      background: #fff;
+      top: 4px;
+      z-index: 1;
+    }
+    &::after {
+      @include taskAfter;
+      background: $minorColor;
+      top: 2px;
+    }
+  }
+
+  &__users {
+    width: 22px;
+    height: 22px;
+    padding: 2px;
+    background: $authorColor;
+    border-radius: 50%;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f2f2f2;
+    div {
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #dcd9d9;
+      border: none;
+    }
+  }
+}

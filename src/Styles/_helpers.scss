@@ -1,7 +1,13 @@
 // Fonts
 $Montserrat: 'Montserrat', sans-serif;
 $Poppins: 'Poppins', sans-serif;
+
+//Colors
 $titleColor: #1d262c;
+$pendingColor: rgba(242, 153, 74, 0.2);
+$pendingTextColor: #f2994a;
+$minorColor: #219653;
+$authorColor: #fbac65;
 
 @mixin mainFont {
   font-family: $Montserrat;
@@ -16,4 +22,42 @@ $titleColor: #1d262c;
   font-weight: 700;
   font-size: 36px;
   color: $titleColor;
+}
+
+@mixin subTitle {
+  font-family: $Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: $titleColor;
+}
+
+@mixin taskBefore {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: linear-gradient(
+    133.9deg,
+    rgba(243, 71, 122, 0.7) 0.24%,
+    rgba(136, 76, 178, 0.7) 95.04%
+  );
+  position: absolute;
+  top: 5px;
+  left: 2px;
+}
+
+@mixin taskAfter {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(
+    133.9deg,
+    rgba(243, 71, 122, 0.2) 0.24%,
+    rgba(136, 76, 178, 0.2) 95.04%
+  );
+  position: absolute;
+  top: 3px;
+  left: 0px;
 }

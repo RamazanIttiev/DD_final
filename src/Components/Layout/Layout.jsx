@@ -1,4 +1,5 @@
 import React from 'react';
+import OnHold from '../OnHold/OnHold';
 import './Layout.scss';
 
 const Layout = () => {
@@ -10,6 +11,7 @@ const Layout = () => {
         </h1>
         <button>Add new</button>
       </div>
+      <OnHold />
     </div>
   );
 };
