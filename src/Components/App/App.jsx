@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../../api';
 import Header from '../Header/Header';
 import Layout from '../Layout/Layout';
 import './App.scss';

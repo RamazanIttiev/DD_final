@@ -1,6 +1,6 @@
 import React from 'react';
 import AllComments from '../AllComments/AllComments';
-import OnHold from '../OnHold/OnHold';
+import AllTasks from '../AllTasks/AllTasks';
 import './Layout.scss';
 
 const Layout = () => {
@@ -13,7 +13,7 @@ const Layout = () => {
           </h1>
           <button>Add new</button>
         </div>
-        <OnHold />
+        <AllTasks />
       </div>
       <AllComments />
     </div>
