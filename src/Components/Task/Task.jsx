@@ -3,15 +3,27 @@ import './Task.scss';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
 import store from '../../state/index';
+import Popover from '@material-ui/core/Popover';
 
 const Task = observer(({ title, status, importance, completed, usersId, id }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
   const completedTasks = id => {
     store.tasks.toggleComplete(id);
   };
 
   const remove = id => {
     store.tasks.remove(id);
-    console.log(store.tasks.tasks);
   };
 
   return (
@@ -25,16 +37,32 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
                 return <img src={author} alt="user" />;
               })}
             </div> */}
-        <div className="Task__menu">
+        <div className="Task__menu" onClick={handleClick}>
           <div></div>
           <div></div>
           <div></div>
         </div>
-        <div className="Task__options">
-          <button onClick={() => completedTasks(id)}>{!completed ? 'done' : 'not done'}</button>
-          <button>comment</button>
-          <button onClick={() => remove(id)}>delete</button>
-        </div>
+
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <div className="Task__options">
+            <button onClick={() => completedTasks(id)}>{!completed ? 'done' : 'not done'}</button>
+            <button>comment</button>
+            <button onClick={() => remove(id)}>delete</button>
+          </div>
+        </Popover>
       </div>
     </>
   );
