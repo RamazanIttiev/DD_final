@@ -1,29 +1,25 @@
-import { makeAutoObservable, toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import api from '../api';
+import { v4 as uuidv4 } from 'uuid';
 
 class TasksState {
   tasks = [
     {
-      id: '1',
+      id: uuidv4(),
       userId: [],
-      title: '1',
+      title: 'Title',
       completed: false,
       status: 'pending',
-      importance: 'minor',
-    },
-    {
-      id: '2',
-      userId: [],
-      title: '2',
-      completed: true,
-      status: 'pending',
-      importance: 'minor',
+      importance: 'Minor',
     },
   ];
 
   constructor() {
     makeAutoObservable(this);
   }
+  // async getTasks() {
+  //   return (this.tasks = await api.tasks.getTasksDB());
+  // }
 
   get onHold() {
     return this.tasks.filter(task => !task.completed);
@@ -38,12 +34,13 @@ class TasksState {
     item.completed = !item.completed;
   }
 
+  addTask(data) {
+    this.tasks.push(data);
+  }
+
   remove(id) {
     this.tasks = this.tasks.filter(item => item.id !== id);
   }
-  // async getTasks() {
-  //   this.tasks = await api.tasks.getTasksDB();
-  // }
 }
 
 export default TasksState;
