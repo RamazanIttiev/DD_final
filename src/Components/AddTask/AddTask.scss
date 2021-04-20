@@ -1,0 +1,14 @@
+@import '../../Styles/helpers.scss';
+
+.AddTask {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  &__title {
+    @include secondaryFont;
+  }
+  &__importance {
+  }
+}

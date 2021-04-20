@@ -4,19 +4,49 @@ import cn from 'classnames';
 import { observer } from 'mobx-react';
 import store from '../../state/index';
 import Popover from '@material-ui/core/Popover';
+import { Button, makeStyles, Modal, TextField } from '@material-ui/core';
 
+const useStyles = makeStyles(() => ({
+  popover: {
+    position: 'absolute',
+  },
+  Modal: {
+    background: '#fff',
+    width: '500px',
+    minHeight: '300px',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '20px',
+    border: 'none',
+  },
+
+  ModalBtn: {
+    width: '80%',
+    margin: '0 auto',
+  },
+}));
 const Task = observer(({ title, status, importance, completed, usersId, id }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles();
+  const [popover, setPopover] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  const openModal = () => {
+    setOpen(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const closeModal = () => {
+    setOpen(false);
   };
 
-  const open = Boolean(anchorEl);
+  const openPopover = event => {
+    setPopover(event.currentTarget);
+  };
+
+  const closePopover = () => {
+    setPopover(null);
+  };
 
   const completedTasks = id => {
     store.tasks.toggleComplete(id);
@@ -37,7 +67,7 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
                 return <img src={author} alt="user" />;
               })}
             </div> */}
-        <div className="Task__menu" onClick={handleClick}>
+        <div className="Task__menu" onClick={openPopover}>
           <div></div>
           <div></div>
           <div></div>
@@ -45,9 +75,9 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
 
         <Popover
           id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
+          open={popover}
+          anchorEl={popover}
+          onClose={closePopover}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'center',
@@ -56,11 +86,18 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
             vertical: 'top',
             horizontal: 'center',
           }}
+          className={classes.popover}
         >
           <div className="Task__options">
-            <button onClick={() => completedTasks(id)}>{!completed ? 'done' : 'not done'}</button>
-            <button>comment</button>
-            <button onClick={() => remove(id)}>delete</button>
+            <Button onClick={() => completedTasks(id)}>{!completed ? 'done' : 'not done'}</Button>
+            <Button onClick={openModal}>comment</Button>
+            <Modal open={open} onClose={closeModal}>
+              <div className={classes.Modal}>
+                <TextField placeholder="Placeholder" multiline />
+                <Button className={classes.ModalBtn}>Comment</Button>
+              </div>
+            </Modal>
+            <Button onClick={() => remove(id)}>delete</Button>
           </div>
         </Popover>
       </div>

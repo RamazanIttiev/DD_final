@@ -6,11 +6,17 @@ class TasksState {
   tasks = [
     {
       id: uuidv4(),
-      userId: [],
       title: 'Title',
       completed: false,
       status: 'pending',
       importance: 'Minor',
+      userId: [],
+      comments: [
+        {
+          id: uuidv4(),
+          text: '',
+        },
+      ],
     },
   ];
 
