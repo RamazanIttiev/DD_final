@@ -4,6 +4,11 @@
   margin-top: 40px;
   padding: 0 20px;
 
+  &__wrapper {
+    margin-bottom: 40px;
+    min-height: 150px;
+  }
+
   &__title {
     @include extraFont;
     display: block;

@@ -41,8 +41,11 @@
         height: 12px;
         display: block;
         position: absolute;
-        left: 25px;
-        top: 10px;
+        left: 20px;
+        top: 6px;
+      }
+      &:hover {
+        background: #eb5757;
       }
     }
   }

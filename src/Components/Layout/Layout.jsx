@@ -8,7 +8,7 @@ import './Layout.scss';
 
 const Layout = () => {
   const [open, setOpen] = React.useState(false);
-  const taskNum = store.tasks.tasks.length;
+  let taskNum = store.tasks.tasks.length;
 
   const handleOpen = () => {
     setOpen(true);

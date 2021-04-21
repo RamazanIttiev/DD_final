@@ -1,11 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 import api from '../api';
-import { v4 as uuidv4 } from 'uuid';
 
 class TasksState {
   tasks = [
     {
-      id: uuidv4(),
+      id: '',
       title: 'Title',
       completed: false,
       status: 'pending',
@@ -13,7 +12,7 @@ class TasksState {
       userId: [],
       comments: [
         {
-          id: uuidv4(),
+          id: '',
           text: '',
         },
       ],

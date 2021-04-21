@@ -3,37 +3,21 @@ import './Task.scss';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
 import store from '../../state/index';
+import done from '../../assets/icons/done.svg';
+import notDone from '../../assets/icons/notDone.svg';
+import comment from '../../assets/icons/comment.svg';
+import deleteTask from '../../assets/icons/delete.svg';
 import Popover from '@material-ui/core/Popover';
-import { Button, makeStyles, Modal, TextField } from '@material-ui/core';
+import CommentModal from '../CommentModal/CommentModal';
+import { Button, Modal } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
-  popover: {
-    position: 'absolute',
-  },
-  Modal: {
-    background: '#fff',
-    width: '500px',
-    minHeight: '300px',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '20px',
-    border: 'none',
-  },
-
-  ModalBtn: {
-    width: '80%',
-    margin: '0 auto',
-  },
-}));
-const Task = observer(({ title, status, importance, completed, usersId, id }) => {
-  const classes = useStyles();
+const Task = observer(({ title, status, importance, completed, userId, id }) => {
   const [popover, setPopover] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
   const openModal = () => {
     setOpen(true);
+    console.log('task', id);
   };
 
   const closeModal = () => {
@@ -53,6 +37,8 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
   };
 
   const remove = id => {
+    let taskNum = store.tasks.tasks.length - 1;
+    console.log(taskNum);
     store.tasks.remove(id);
   };
 
@@ -62,11 +48,7 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
         <span className="Task__title">{title}</span>
         <div className="Task__status">{status}</div>
         <div className="Task__importance">{importance}</div>
-        {/* <div className="Task__users">
-              {usersId.map(() => {
-                return <img src={author} alt="user" />;
-              })}
-            </div> */}
+
         <div className="Task__menu" onClick={openPopover}>
           <div></div>
           <div></div>
@@ -86,18 +68,21 @@ const Task = observer(({ title, status, importance, completed, usersId, id }) =>
             vertical: 'top',
             horizontal: 'center',
           }}
-          className={classes.popover}
         >
           <div className="Task__options">
-            <Button onClick={() => completedTasks(id)}>{!completed ? 'done' : 'not done'}</Button>
-            <Button onClick={openModal}>comment</Button>
+            <Button onClick={() => completedTasks(id)}>
+              <img src={!completed ? done : notDone} alt="Done" />
+            </Button>
+            <Button onClick={openModal}>
+              {' '}
+              <img src={comment} alt="Comment" />
+            </Button>
             <Modal open={open} onClose={closeModal}>
-              <div className={classes.Modal}>
-                <TextField placeholder="Placeholder" multiline />
-                <Button className={classes.ModalBtn}>Comment</Button>
-              </div>
+              <CommentModal userId={userId} id={id} />
             </Modal>
-            <Button onClick={() => remove(id)}>delete</Button>
+            <Button onClick={() => remove(id)}>
+              <img src={deleteTask} alt="Delete" />
+            </Button>
           </div>
         </Popover>
       </div>
