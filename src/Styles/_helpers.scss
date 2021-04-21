@@ -3,6 +3,8 @@ $Montserrat: 'Montserrat', sans-serif;
 $Poppins: 'Poppins', sans-serif;
 
 //Colors
+$primaryColor: #884cb2;
+$secondaryColor: #eb5757;
 $titleColor: #1d262c;
 $pendingColor: rgba(242, 153, 74, 0.2);
 $pendingTextColor: #f2994a;
@@ -69,4 +71,14 @@ $messageBgr: #f3f3f3;
   position: absolute;
   top: 3px;
   left: 0px;
+}
+
+@mixin textarea {
+  @include extraFont;
+  font-size: 16px;
+  border-radius: 20px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  padding: 10px 10px 0;
 }

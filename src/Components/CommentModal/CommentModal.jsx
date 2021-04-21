@@ -28,7 +28,7 @@ const CommentModal = props => {
   };
   return (
     <div className={classes.Modal}>
-      <TextField placeholder="Placeholder" multiline />
+      <TextField className="Comment__textarea" placeholder="Placeholder" multiline />
       <Button onClick={sendComment} className={classes.ModalBtn}>
         Comment
       </Button>
