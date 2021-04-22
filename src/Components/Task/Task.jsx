@@ -8,16 +8,16 @@ import notDone from '../../assets/icons/notDone.svg';
 import comment from '../../assets/icons/comment.svg';
 import deleteTask from '../../assets/icons/delete.svg';
 import Popover from '@material-ui/core/Popover';
-import CommentModal from '../CommentModal/CommentModal';
+import AddComment from '../AddComment/AddComment';
 import { Button, Modal } from '@material-ui/core';
 
-const Task = observer(({ title, status, importance, completed, userId, id }) => {
+const Task = observer(props => {
   const [popover, setPopover] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const { title, status, importance, completed, userId, id, comments } = props;
 
   const openModal = () => {
     setOpen(true);
-    console.log('task', id);
   };
 
   const closeModal = () => {
@@ -37,9 +37,7 @@ const Task = observer(({ title, status, importance, completed, userId, id }) => 
   };
 
   const remove = id => {
-    let taskNum = store.tasks.tasks.length - 1;
-    console.log(taskNum);
-    store.tasks.remove(id);
+    store.tasks.removeTask(id);
   };
 
   return (
@@ -74,11 +72,10 @@ const Task = observer(({ title, status, importance, completed, userId, id }) => 
               <img src={!completed ? done : notDone} alt="Done" />
             </Button>
             <Button onClick={openModal}>
-              {' '}
               <img src={comment} alt="Comment" />
             </Button>
             <Modal open={open} onClose={closeModal}>
-              <CommentModal userId={userId} id={id} />
+              <AddComment {...props} />
             </Modal>
             <Button onClick={() => remove(id)}>
               <img src={deleteTask} alt="Delete" />

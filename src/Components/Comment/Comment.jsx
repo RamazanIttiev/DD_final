@@ -4,7 +4,6 @@ import avatar from '../../assets/img/avatar.png';
 
 const Comment = props => {
   const { id, title, userId, comments } = props.userComment;
-
   let commentTime = new Date();
 
   return (
