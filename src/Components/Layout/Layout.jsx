@@ -1,5 +1,6 @@
 import { Button, Modal } from '@material-ui/core';
 import React from 'react';
+import api from '../../api';
 import store from '../../state';
 import AddTask from '../AddTask/AddTask';
 import AllComments from '../AllComments/AllComments';
@@ -8,7 +9,12 @@ import './Layout.scss';
 
 const Layout = () => {
   const [open, setOpen] = React.useState(false);
-  let taskNum = store.tasks.tasks.length;
+
+  let taskNum = 0;
+  React.useEffect(() => {
+    taskNum = api.tasks.getTasksDB().then(res => res);
+    return taskNum;
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);

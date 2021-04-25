@@ -1,9 +1,9 @@
-import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { Button, makeStyles } from '@material-ui/core';
+import React, { useState } from 'react';
 import './AddTask.scss';
 import cn from 'classnames';
 import store from '../../state';
+import { v4 as uuidv4 } from 'uuid';
+import { Button, makeStyles } from '@material-ui/core';
 import { Field, FieldArray, Form, Formik } from 'formik';
 
 const useStyles = makeStyles(() => ({
@@ -29,68 +29,115 @@ const useStyles = makeStyles(() => ({
 
 const AddTask = ({ setOpen }) => {
   const classes = useStyles();
+  const [btnValue, setBtnValue] = React.useState('');
+  const [taskTitle, setTaskTitle] = useState('');
+
+  const id = uuidv4();
+
   const initialValues = {
-    id: uuidv4(),
-    userId: [],
-    title: '',
-    completed: false,
-    status: 'pending',
-    importance: '',
+    task: {
+      id: id,
+      userId: [],
+      title: '',
+      completed: false,
+      status: 'pending',
+      importance: 'Minor',
+    },
+
     comments: [
       {
+        taskId: id,
         id: uuidv4(),
-        text: '',
+        taskComments: [{ text: '' }],
       },
     ],
   };
 
   const addNewTask = values => {
-    console.log(values);
-    store.tasks.addTask(values);
+    store.tasks.addTask(values.task);
+    values.comments.map(item => {
+      item.taskTitle = values.task.title;
+      return store.tasks.addComment(item);
+    });
+
     setOpen(false);
   };
+
+  function validateTitle(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    }
+    return error;
+  }
 
   return (
     <div className={cn(classes.Modal, 'AddTask')}>
       <h1 className="AddTask__title">Add your new task</h1>
       <Formik initialValues={initialValues} onSubmit={addNewTask}>
-        <Form className="AddTask__form">
-          <Field
-            className="AddTask__textarea"
-            as="textarea"
-            id="Task"
-            name="title"
-            placeholder="Write your task"
-          />
-          <div className="AddTask__radioGroup">
-            <label className="AddTask__radioLabel">
-              <Field className="AddTask__radio" type="radio" name="importance" value="Major" />
-              Major
-            </label>
-            <label className="AddTask__radioLabel">
-              <Field className="AddTask__radio" type="radio" name="importance" value="Minor" />
-              Minor
-            </label>
-          </div>
-          <FieldArray
-            name="friends"
-            render={() =>
-              initialValues.comments.map((comment, index) => (
-                <Field
-                  className="AddTask__textarea AddTask__comment"
-                  as="textarea"
-                  key={index}
-                  placeholder="Comment it, if you wish"
-                  name={`comments[${index}].text`}
-                />
-              ))
-            }
-          />
+        {({ errors, touched, isValidating }) => (
+          <Form className="AddTask__form">
+            <Field
+              className="AddTask__textarea"
+              as="textarea"
+              id="Task"
+              name="task.title"
+              placeholder="Write your task"
+              validate={validateTitle}
+            />
+            {errors.title && touched.title && <div>{errors.title}</div>}
 
-          <Button className={classes.ModalBtn} type="submit">
-            Add
-          </Button>
-        </Form>
+            <div className="AddTask__radioGroup">
+              <label
+                className={cn(
+                  'AddTask__radioLabel',
+                  btnValue === 'Major' ? 'AddTask__radio_active' : '',
+                )}
+              >
+                <Field
+                  type="radio"
+                  name="task.importance"
+                  value="Major"
+                  className="AddTask__radio"
+                  onClick={e => setBtnValue(e.target.value)}
+                />
+                Major
+              </label>
+              <label
+                className={cn(
+                  'AddTask__radioLabel',
+                  btnValue === 'Minor' ? 'AddTask__radio_active' : '',
+                )}
+              >
+                <Field
+                  type="radio"
+                  name="task.importance"
+                  value="Minor"
+                  className="AddTask__radio"
+                  onClick={e => setBtnValue(e.target.value)}
+                />
+                Minor
+              </label>
+            </div>
+            <FieldArray
+              render={() =>
+                initialValues.comments.map((comment, index) => (
+                  <Field
+                    className="AddTask__textarea AddTask__comment"
+                    as="textarea"
+                    key={index}
+                    placeholder="Comment it, if you wish"
+                    name={`comments[${index}].taskComments.[${index}].text`}
+                  />
+                ))
+              }
+            />
+
+            <Button className={classes.ModalBtn} type="submit">
+              Add
+            </Button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

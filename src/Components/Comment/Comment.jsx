@@ -3,7 +3,7 @@ import './Comment.scss';
 import avatar from '../../assets/img/avatar.png';
 
 const Comment = props => {
-  const { id, title, userId, comments } = props.userComment;
+  const { taskTitle, id, taskComments, userId } = props.userComment;
   let commentTime = new Date();
 
   return (
@@ -17,12 +17,12 @@ const Comment = props => {
             <span className="Comment__name">Alena Curtis</span>
             <span className="Comment__date">- {commentTime.toLocaleString()}</span>
           </div>
-          <span className="Comment__task">{title}</span>
+          <span className="Comment__task">{taskTitle}</span>
         </div>
       </div>
-      {comments.map(({ id, text }) => {
+      {taskComments.map(({ text }, index) => {
         return (
-          <span className="Comment__message" key={id}>
+          <span className="Comment__message" key={index}>
             {text}
           </span>
         );

@@ -3,6 +3,7 @@ import api from '../api';
 
 class TasksState {
   tasks = [];
+  comments = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -20,14 +21,25 @@ class TasksState {
     return (this.tasks = await api.tasks.getTasksDB());
   }
 
+  async getComments() {
+    return (this.comments = await api.tasks.getCommentsDB());
+  }
+
   async addTask(data) {
     await api.tasks.postTasksDB(data);
     await this.getTasks();
   }
 
   async addComment(data) {
-    await api.tasks.postCommentDB(data);
-    await this.getTasks();
+    let getdata = await api.tasks.postCommentDB(data);
+    data.taskComments.map(({ text }) => {
+      if (!text) {
+        return null;
+      } else {
+        return getdata;
+      }
+    });
+    await this.getComments();
   }
 
   async removeTask(id) {
@@ -35,9 +47,13 @@ class TasksState {
     await this.getTasks();
   }
 
-  toggleComplete(id) {
+  async toggleComplete(id) {
     const item = this.tasks.find(({ id: _id }) => _id === id);
+
     item.completed = !item.completed;
+
+    await api.tasks.changeStatus(item);
+    await this.getTasks();
   }
 }
 

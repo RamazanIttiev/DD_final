@@ -8,15 +8,23 @@ export class TasksService {
     return this.request.get('/tasks');
   }
 
+  getCommentsDB() {
+    return this.request.get('/comments');
+  }
+
   postTasksDB(task) {
     return this.request.post('/tasks', task);
   }
 
   postCommentDB(data) {
-    return this.request.put(`/tasks/${data.id}`, data);
+    return this.request.post(`/comments`, data);
   }
 
   deleteTasksDB(id) {
     return this.request.delete(`/tasks/${id}`);
+  }
+
+  changeStatus(item) {
+    return this.request.put(`/tasks/${item.id}`, item);
   }
 }

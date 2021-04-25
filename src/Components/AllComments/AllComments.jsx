@@ -3,12 +3,12 @@ import Comment from '../Comment/Comment';
 import './AllComments.scss';
 import { observer } from 'mobx-react';
 import store from '../../state';
+import api from '../../api';
 
 const AllComments = observer(() => {
-  const taskComment = store.tasks.tasks;
   return (
     <aside className="AllComments">
-      {taskComment.map(userComment => {
+      {store.tasks.comments.map(userComment => {
         return <Comment userComment={userComment} />;
       })}
     </aside>

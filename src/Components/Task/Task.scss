@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: space-between;
 
+  &__completed {
+    opacity: 0.5;
+  }
   &__title {
     @include primaryFont;
     position: relative;

@@ -42,7 +42,7 @@ const Task = observer(props => {
 
   return (
     <>
-      <div className={cn('Task', completed === false ? '' : 'Task__onHold')} key={id}>
+      <div className={cn('Task', completed && 'Task__completed')} key={id}>
         <span className="Task__title">{title}</span>
         <div className="Task__status">{status}</div>
         <div className="Task__importance">{importance}</div>
