@@ -31,14 +31,7 @@ class TasksState {
   }
 
   async addComment(data) {
-    let getdata = await api.tasks.postCommentDB(data);
-    data.taskComments.map(({ text }) => {
-      if (!text) {
-        return null;
-      } else {
-        return getdata;
-      }
-    });
+    await api.tasks.postCommentDB(data);
     await this.getComments();
   }
 

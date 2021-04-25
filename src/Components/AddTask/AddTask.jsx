@@ -54,9 +54,14 @@ const AddTask = ({ setOpen }) => {
 
   const addNewTask = values => {
     store.tasks.addTask(values.task);
+
     values.comments.map(item => {
-      item.taskTitle = values.task.title;
-      return store.tasks.addComment(item);
+      item.taskComments.map(({ text }) => {
+        if (text !== '') {
+          item.taskTitle = values.task.title;
+          return store.tasks.addComment(item);
+        }
+      });
     });
 
     setOpen(false);
