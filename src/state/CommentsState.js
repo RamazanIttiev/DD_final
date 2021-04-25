@@ -3,6 +3,7 @@ import api from '../api';
 
 class CommentsState {
   comments = [];
+  messages = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -12,9 +13,18 @@ class CommentsState {
     return (this.comments = await api.comments.getCommentsDB());
   }
 
+  async getMessages() {
+    return (this.messages = await api.comments.getMessagesDB());
+  }
+
   async addComment(data) {
     await api.comments.postCommentDB(data);
     await this.getComments();
+  }
+
+  async addMessage(data) {
+    await api.comments.postMessageDB(data);
+    await this.getMessages();
   }
 
   // async removeTask(id) {

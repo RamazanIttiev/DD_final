@@ -8,8 +8,17 @@ export class CommentsService {
     return this.request.get('/comments');
   }
 
+  getMessagesDB() {
+    return this.request.get('/messages');
+  }
+
   postCommentDB(data) {
     return this.request.post(`/comments`, data);
+  }
+
+  postMessageDB(data) {
+    console.log(data);
+    return this.request.post(`/messages`, data);
   }
 
   // postExtraCommentDB(data) {

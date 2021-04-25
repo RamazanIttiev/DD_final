@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import store from '.';
 import api from '../api';
 
 class TasksState {
@@ -28,6 +29,8 @@ class TasksState {
   async removeTask(id) {
     await api.tasks.deleteTasksDB(id);
     await this.getTasks();
+    await store.comments.getComments();
+    await store.comments.getMessages();
   }
 
   async toggleComplete(id) {

@@ -47,7 +47,13 @@ const AddTask = ({ setOpen }) => {
       {
         taskId: id,
         id: uuidv4(),
-        taskComments: [{ text: '' }],
+      },
+    ],
+
+    messages: [
+      {
+        taskId: id,
+        text: '',
       },
     ],
   };
@@ -55,15 +61,17 @@ const AddTask = ({ setOpen }) => {
   const addNewTask = values => {
     store.tasks.addTask(values.task);
 
-    values.comments.map(item => {
-      item.taskComments.map(({ text }) => {
-        if (text !== '') {
-          item.taskTitle = values.task.title;
-          return store.comments.addComment(item);
-        }
-      });
+    values.messages.map(item => {
+      if (item !== '') {
+        values.comments.map(commetBlock => {
+          commetBlock.taskTitle = values.task.title;
+          store.comments.addComment(commetBlock);
+          values.messages.map(message => {
+            store.comments.addMessage(message);
+          });
+        });
+      }
     });
-
     setOpen(false);
   };
 
@@ -125,13 +133,13 @@ const AddTask = ({ setOpen }) => {
             </div>
             <FieldArray
               render={() =>
-                initialValues.comments.map((comment, index) => (
+                initialValues.comments.map((message, index) => (
                   <Field
                     className="AddTask__textarea AddTask__comment"
                     as="textarea"
                     key={index}
                     placeholder="Comment it, if you wish"
-                    name={`comments[${index}].taskComments.[${index}].text`}
+                    name={`messages[${index}].text`}
                   />
                 ))
               }
