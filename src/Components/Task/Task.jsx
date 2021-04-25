@@ -14,7 +14,7 @@ import { Button, Modal } from '@material-ui/core';
 const Task = observer(props => {
   const [popover, setPopover] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const { title, status, importance, completed, userId, id, comments } = props;
+  const { title, status, importance, completed, userId, id } = props;
 
   const openModal = () => {
     setOpen(true);
@@ -32,11 +32,11 @@ const Task = observer(props => {
     setPopover(null);
   };
 
-  const completedTasks = id => {
+  const completedTasks = () => {
     store.tasks.toggleComplete(id);
   };
 
-  const remove = id => {
+  const remove = () => {
     store.tasks.removeTask(id);
   };
 
@@ -68,7 +68,7 @@ const Task = observer(props => {
           }}
         >
           <div className="Task__options">
-            <Button onClick={() => completedTasks(id)}>
+            <Button onClick={completedTasks}>
               <img src={!completed ? done : notDone} alt="Done" />
             </Button>
             <Button onClick={openModal}>
@@ -77,7 +77,7 @@ const Task = observer(props => {
             <Modal open={open} onClose={closeModal}>
               <AddComment {...props} />
             </Modal>
-            <Button onClick={() => remove(id)}>
+            <Button onClick={remove}>
               <img src={deleteTask} alt="Delete" />
             </Button>
           </div>

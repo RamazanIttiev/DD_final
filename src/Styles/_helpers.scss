@@ -8,6 +8,10 @@ $secondaryColor: #eb5757;
 $titleColor: #1d262c;
 $pendingColor: rgba(242, 153, 74, 0.2);
 $pendingTextColor: #f2994a;
+$inprogressColor: rgba(86, 204, 242, 0.2);
+$inprogressTextColor: #56ccf2;
+$completedColor: rgba(39, 174, 96, 0.2);
+$completedTextColor: #27ae60;
 $minorColor: #219653;
 $authorColor: #fbac65;
 $avatarBorder: #78cfdf;
@@ -81,4 +85,33 @@ $messageBgr: #f3f3f3;
   resize: none;
   outline: none;
   padding: 10px 10px 0;
+}
+
+@mixin status {
+  @include primaryFont;
+  font-size: 11px;
+  border-radius: 8.5px;
+  background: $pendingColor;
+  color: $pendingTextColor;
+  padding: 5px 17px;
+  text-align: center;
+}
+
+@mixin importance {
+  @include primaryFont;
+  position: relative;
+  font-size: 12px;
+  padding-left: 12px;
+  &::before {
+    @include taskBefore;
+    background: #fff;
+    top: 5px;
+    left: 2px;
+    z-index: 1;
+  }
+  &::after {
+    @include taskAfter;
+    background: $minorColor;
+    top: 2px;
+  }
 }

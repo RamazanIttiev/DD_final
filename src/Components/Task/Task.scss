@@ -26,32 +26,23 @@
   }
 
   &__status {
-    @include primaryFont;
-    font-size: 11px;
-    border-radius: 8.5px;
-    background: $pendingColor;
-    color: $pendingTextColor;
-    padding: 5px 17px;
-    text-align: center;
+    @include status;
+  }
+
+  &__statusInprogress {
+    @include status;
+    background: $inprogressColor;
+    color: $inprogressTextColor;
+  }
+
+  &__statusCompleted {
+    @include status;
+    background: $completedColor;
+    color: $completedTextColor;
   }
 
   &__importance {
-    @include primaryFont;
-    position: relative;
-    font-size: 12px;
-    padding-left: 12px;
-    &::before {
-      @include taskBefore;
-      background: #fff;
-      top: 5px;
-      left: 2px;
-      z-index: 1;
-    }
-    &::after {
-      @include taskAfter;
-      background: $minorColor;
-      top: 2px;
-    }
+    @include importance;
   }
 
   &__users {

@@ -1,5 +1,48 @@
-.Comment {
+@import '../../Styles/helpers';
+
+.AddComment {
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+  &__heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  &__title {
+    @include secondaryFont;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  &__status {
+    @include status;
+  }
+  &__statusInprogress {
+    @include status;
+    background: $inprogressColor;
+    color: $inprogressTextColor;
+  }
+  &__statusCompleted {
+    @include status;
+    background: $completedColor;
+    color: $completedTextColor;
+  }
+  &__importance {
+    @include importance;
+    margin-left: 20px;
+  }
   &__textarea {
     @include textarea;
+    min-height: 100px;
+    margin-bottom: 30px;
+    min-height: 150px;
   }
 }

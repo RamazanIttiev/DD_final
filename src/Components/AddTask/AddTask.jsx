@@ -30,14 +30,13 @@ const useStyles = makeStyles(() => ({
 const AddTask = ({ setOpen }) => {
   const classes = useStyles();
   const [btnValue, setBtnValue] = React.useState('');
-  const [taskTitle, setTaskTitle] = useState('');
 
   const id = uuidv4();
 
   const initialValues = {
     task: {
       id: id,
-      userId: [],
+      // userId: [],
       title: '',
       completed: false,
       status: 'pending',
