@@ -20,7 +20,7 @@ const App = observer(() => {
 
   React.useEffect(() => {
     store.tasks.getTasks();
-    store.tasks.getComments();
+    store.comments.getComments();
   }, []);
 
   const handleClose = () => {

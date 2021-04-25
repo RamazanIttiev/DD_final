@@ -38,7 +38,15 @@ const AddComment = ({ title, status, importance, completed, userId, id, comments
   };
 
   const sendComment = values => {
-    store.tasks.addComment(values);
+    if (values.taskId === id) {
+      values.taskComments.map(item => {
+        let arr = [];
+        values.taskComments.push(item);
+        console.log(values.taskComments);
+        // return values.taskComments.push(item.text);
+      });
+    }
+    // store.tasks.addComment(values);
   };
 
   return (

@@ -3,7 +3,6 @@ import api from '../api';
 
 class TasksState {
   tasks = [];
-  comments = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -21,18 +20,9 @@ class TasksState {
     return (this.tasks = await api.tasks.getTasksDB());
   }
 
-  async getComments() {
-    return (this.comments = await api.tasks.getCommentsDB());
-  }
-
   async addTask(data) {
     await api.tasks.postTasksDB(data);
     await this.getTasks();
-  }
-
-  async addComment(data) {
-    await api.tasks.postCommentDB(data);
-    await this.getComments();
   }
 
   async removeTask(id) {

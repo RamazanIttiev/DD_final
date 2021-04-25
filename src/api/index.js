@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { TasksService } from './services';
+import { CommentsService, TasksService } from './services';
 import store from '../state';
 
 class API {
   request;
   tasks;
+  comments;
   requestList = [];
 
   constructor(baseURL) {
@@ -15,6 +16,7 @@ class API {
     this.setInterceptors();
 
     this.tasks = new TasksService(this.request);
+    this.comments = new CommentsService(this.request);
   }
 
   setInterceptors() {

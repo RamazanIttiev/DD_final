@@ -59,7 +59,7 @@ const AddTask = ({ setOpen }) => {
       item.taskComments.map(({ text }) => {
         if (text !== '') {
           item.taskTitle = values.task.title;
-          return store.tasks.addComment(item);
+          return store.comments.addComment(item);
         }
       });
     });

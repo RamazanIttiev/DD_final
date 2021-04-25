@@ -8,7 +8,7 @@ import api from '../../api';
 const AllComments = observer(() => {
   return (
     <aside className="AllComments">
-      {store.tasks.comments.map(userComment => {
+      {store.comments.comments.map(userComment => {
         return <Comment userComment={userComment} />;
       })}
     </aside>
