@@ -17,7 +17,6 @@ export class CommentsService {
   }
 
   postMessageDB(data) {
-    console.log(data);
     return this.request.post(`/messages`, data);
   }
 

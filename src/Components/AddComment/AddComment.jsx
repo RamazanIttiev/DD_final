@@ -27,26 +27,29 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const AddComment = ({ title, status, importance, completed, userId, id, comments }) => {
+const AddComment = ({ title, status, importance, completed, userId, id, comments, closeModal }) => {
   const classes = useStyles();
 
   const initialValues = {
-    taskTitle: title,
-    taskId: id,
-    id: uuidv4(),
-    taskComments: [{ text: '' }],
+    task: {
+      taskTitle: title,
+      taskId: id,
+      id: uuidv4(),
+    },
+    messages: [
+      {
+        taskId: id,
+        text: '',
+      },
+    ],
   };
 
   const sendComment = values => {
-    if (values.taskId === id) {
-      values.taskComments.map(item => {
-        let arr = [];
-        values.taskComments.push(item);
-        console.log(values.taskComments);
-        // return values.taskComments.push(item.text);
-      });
-    }
-    // store.tasks.addComment(values);
+    values.messages.map(message => {
+      return store.comments.addMessage(message);
+    });
+
+    closeModal();
   };
 
   return (
@@ -63,13 +66,13 @@ const AddComment = ({ title, status, importance, completed, userId, id, comments
           <Form className="AddComment__form">
             <FieldArray
               render={() =>
-                initialValues.taskComments.map((text, index) => (
+                initialValues.messages.map((text, index) => (
                   <Field
                     className="AddComment__textarea AddComment__comment"
                     as="textarea"
                     key={index}
                     placeholder="Comment it, if you wish"
-                    name={`taskComments[${index}].text`}
+                    name={`messages[${index}].text`}
                   />
                 ))
               }

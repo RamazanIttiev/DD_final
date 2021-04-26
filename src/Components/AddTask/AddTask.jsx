@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const AddTask = ({ setOpen }) => {
+const AddTask = ({ closeModal }) => {
   const classes = useStyles();
   const [btnValue, setBtnValue] = React.useState('');
 
@@ -62,7 +62,7 @@ const AddTask = ({ setOpen }) => {
     store.tasks.addTask(values.task);
 
     values.messages.map(item => {
-      if (item !== '') {
+      if (item.text !== '') {
         values.comments.map(commetBlock => {
           commetBlock.taskTitle = values.task.title;
           store.comments.addComment(commetBlock);
@@ -72,7 +72,7 @@ const AddTask = ({ setOpen }) => {
         });
       }
     });
-    setOpen(false);
+    closeModal();
   };
 
   function validateTitle(value) {
@@ -133,7 +133,7 @@ const AddTask = ({ setOpen }) => {
             </div>
             <FieldArray
               render={() =>
-                initialValues.comments.map((message, index) => (
+                initialValues.messages.map((message, index) => (
                   <Field
                     className="AddTask__textarea AddTask__comment"
                     as="textarea"

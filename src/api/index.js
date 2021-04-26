@@ -26,7 +26,6 @@ class API {
       this.requestList.push(config);
       // Задаем значение прелодера
       store.preloader.setPreloader(true);
-
       return config;
     });
 

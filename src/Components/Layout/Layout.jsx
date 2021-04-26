@@ -16,11 +16,11 @@ const Layout = () => {
     return taskNum;
   }, []);
 
-  const handleOpen = () => {
+  const openModal = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const closeModal = () => {
     setOpen(false);
   };
 
@@ -50,10 +50,10 @@ const Layout = () => {
             You’ve got <span>{wordEnding(taskNum, [`${taskNum} task`, `${taskNum} tasks`])} </span>
             today
           </h1>
-          <Button onClick={handleOpen}>Add new</Button>
+          <Button onClick={openModal}>Add new</Button>
         </div>
-        <Modal open={open} onClose={handleClose}>
-          <AddTask setOpen={setOpen} />
+        <Modal open={open} onClose={closeModal}>
+          <AddTask closeModal={closeModal} />
         </Modal>
         <AllTasks />
       </div>
