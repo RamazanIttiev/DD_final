@@ -20,10 +20,6 @@ export class CommentsService {
     return this.request.post(`/messages`, data);
   }
 
-  // postExtraCommentDB(data) {
-  //   return this.request.post(`/comments/`, data);
-  // }
-
   // deleteTasksDB(id) {
   //   return this.request.delete(`/tasks/${id}`);
   // }

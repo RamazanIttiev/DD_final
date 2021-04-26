@@ -22,6 +22,7 @@ const App = observer(() => {
     store.tasks.getTasks();
     store.comments.getMessages();
     store.comments.getComments();
+    store.users.getUsers();
   }, []);
 
   const handleClose = () => {

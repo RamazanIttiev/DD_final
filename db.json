@@ -20,17 +20,13 @@
       "taskId": "efcb1dec-7362-4cf4-aaec-c72be0445a20",
       "text": "q",
       "id": "29099fc9-5f3a-4828-8653-a706f82b73cb"
-    },
-    {
-      "taskId": "efcb1dec-7362-4cf4-aaec-c72be0445a20",
-      "id": "b1eb2781-9e9a-4905-b0bc-a41c1fc2ac92",
-      "text": "asa"
-    },
-    {
-      "taskId": "efcb1dec-7362-4cf4-aaec-c72be0445a20",
-      "id": "baf5a1d2-38cf-4001-acc4-f795ac12a3dc",
-      "text": "asasa"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "name": "Ramazan",
+      "id": 1,
+      "avatar": "https://pixabay.com/photos/skull-death-mountain-lion-puma-1170772/"
+    }
+  ]
 }
