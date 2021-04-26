@@ -4,24 +4,15 @@ export class TasksService {
     this.request = instance;
   }
 
-  getTasksDB() {
-    return this.request.get('/tasks');
-  }
-
-  getCommentsDB() {
-    return this.request.get('/comments');
+  getTasksDB(data) {
+    if (data === undefined) {
+      return this.request.get(`/tasks`);
+    }
+    return this.request.get(`/tasks/?title=${data}`);
   }
 
   postTasksDB(task) {
     return this.request.post('/tasks', task);
-  }
-
-  postCommentDB(data) {
-    return this.request.post(`/comments`, data);
-  }
-
-  postExtraCommentDB(data) {
-    return this.request.post(`/comments/`, data);
   }
 
   deleteTasksDB(id) {

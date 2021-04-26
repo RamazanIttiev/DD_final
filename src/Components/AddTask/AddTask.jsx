@@ -54,11 +54,13 @@ const AddTask = ({ closeModal }) => {
       {
         taskId: id,
         text: '',
+        id: uuidv4(),
       },
     ],
   };
 
   const addNewTask = values => {
+    console.log(values.messages);
     store.tasks.addTask(values.task);
 
     values.messages.map(item => {

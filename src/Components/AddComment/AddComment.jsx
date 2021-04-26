@@ -27,7 +27,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const AddComment = ({ title, status, importance, completed, userId, id, comments, closeModal }) => {
+const AddComment = ({
+  title,
+  status,
+  importance,
+  completed,
+  userId,
+  id,
+  comments,
+  closePopover,
+  closeModal,
+}) => {
   const classes = useStyles();
 
   const initialValues = {
@@ -39,6 +49,7 @@ const AddComment = ({ title, status, importance, completed, userId, id, comments
     messages: [
       {
         taskId: id,
+        id: uuidv4(),
         text: '',
       },
     ],
@@ -46,10 +57,11 @@ const AddComment = ({ title, status, importance, completed, userId, id, comments
 
   const sendComment = values => {
     values.messages.map(message => {
-      return store.comments.addMessage(message);
+      store.comments.addMessage(message);
     });
 
     closeModal();
+    closePopover();
   };
 
   return (

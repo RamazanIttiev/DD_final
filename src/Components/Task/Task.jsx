@@ -34,10 +34,12 @@ const Task = observer(props => {
 
   const completedTasks = () => {
     store.tasks.toggleComplete(id);
+    closePopover();
   };
 
   const remove = () => {
     store.tasks.removeTask(id);
+    closePopover();
   };
 
   return (
@@ -75,7 +77,7 @@ const Task = observer(props => {
               <img src={comment} alt="Comment" />
             </Button>
             <Modal open={open} onClose={closeModal}>
-              <AddComment {...props} />
+              <AddComment closePopover={closePopover} closeModal={closeModal} {...props} />
             </Modal>
             <Button onClick={remove}>
               <img src={deleteTask} alt="Delete" />
