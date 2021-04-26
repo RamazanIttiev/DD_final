@@ -17,8 +17,8 @@ class TasksState {
     return this.tasks.filter(tasks => tasks.completed);
   }
 
-  async getTasks() {
-    return (this.tasks = await api.tasks.getTasksDB());
+  async getTasks(data) {
+    return (this.tasks = await api.tasks.getTasksDB(data));
   }
 
   async addTask(data) {

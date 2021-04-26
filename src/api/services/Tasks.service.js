@@ -5,10 +5,11 @@ export class TasksService {
   }
 
   getTasksDB(data) {
+    console.log(data);
     if (data === undefined) {
       return this.request.get(`/tasks`);
     }
-    return this.request.get(`/tasks/?title=${data}`);
+    return this.request.get(`/tasks/?title_like=${data}`);
   }
 
   postTasksDB(task) {

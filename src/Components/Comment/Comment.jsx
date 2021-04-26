@@ -6,7 +6,7 @@ import store from '../../state';
 const Comment = props => {
   const { taskTitle, id, userId } = props.userComment;
   let commentTime = new Date();
-  console.log(store.comments.messages);
+
   return (
     <div className="Comment" key={id}>
       <div className="Comment__heading">
