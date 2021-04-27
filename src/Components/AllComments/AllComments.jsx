@@ -6,11 +6,18 @@ import store from '../../state';
 import api from '../../api';
 
 const AllComments = observer(() => {
+  const comments = store.comments.comments;
+  const messages = store.comments.messages;
+
   return (
     <aside className="AllComments">
-      {store.comments.comments.map(userComment => {
-        return <Comment userComment={userComment} />;
-      })}
+      {comments.length !== 0 || messages.length !== 0 ? (
+        comments.map(userComment => {
+          return <Comment userComment={userComment} />;
+        })
+      ) : (
+        <div>Комментарии</div>
+      )}
     </aside>
   );
 });
