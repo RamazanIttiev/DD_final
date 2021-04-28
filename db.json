@@ -1,32 +1,15 @@
 {
-  "tasks": [
-    {
-      "id": "efcb1dec-7362-4cf4-aaec-c72be0445a20",
-      "title": "q",
-      "completed": false,
-      "status": "pending",
-      "importance": "Minor"
-    }
-  ],
-  "comments": [
-    {
-      "taskId": "efcb1dec-7362-4cf4-aaec-c72be0445a20",
-      "id": "bba1b04c-7e24-4e18-9133-67ec1cb9e5f6",
-      "taskTitle": "q"
-    }
-  ],
-  "messages": [
-    {
-      "taskId": "efcb1dec-7362-4cf4-aaec-c72be0445a20",
-      "text": "q",
-      "id": "29099fc9-5f3a-4828-8653-a706f82b73cb"
-    }
-  ],
+  "tasks": [],
+  "comments": [],
+  "messages": [],
   "users": [
     {
       "name": "Ramazan",
-      "id": 1,
-      "avatar": "https://pixabay.com/photos/skull-death-mountain-lion-puma-1170772/"
+      "id": 1
+    },
+    {
+      "name": "User",
+      "id": 2
     }
   ]
 }

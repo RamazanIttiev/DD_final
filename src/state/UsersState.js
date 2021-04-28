@@ -8,8 +8,8 @@ class UsersState {
     makeAutoObservable(this);
   }
 
-  async getUsers() {
-    return (this.users = await api.users.getUsersDB());
+  async getUsers(data) {
+    return (this.users = await api.users.getUsersDB(data));
   }
 }
 

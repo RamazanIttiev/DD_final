@@ -16,7 +16,7 @@ const AllComments = observer(() => {
           return <Comment userComment={userComment} />;
         })
       ) : (
-        <div>Комментарии</div>
+        <div className="AllComments__text">Комментарии к заданиям</div>
       )}
     </aside>
   );

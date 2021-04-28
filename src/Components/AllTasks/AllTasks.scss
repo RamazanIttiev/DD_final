@@ -1,17 +1,60 @@
 @import '../../Styles/helpers.scss';
 
 .AllTasks {
-  margin-top: 40px;
-  padding: 0 20px;
-
+  width: 75%;
   &__wrapper {
     margin-bottom: 40px;
     min-height: 150px;
+    padding: 0 15px;
   }
 
   &__title {
     @include extraFont;
     display: block;
     margin-bottom: 30px;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    h1 {
+      @include title;
+
+      span {
+        color: #eb5757;
+      }
+    }
+
+    button {
+      position: relative;
+      width: 140px;
+      height: 35px;
+      background: #884cb2;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      margin-left: 20px;
+      padding-left: 15px;
+
+      &::before {
+        content: url('../../assets/icons/add_new.svg');
+        width: 12px;
+        height: 12px;
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 6px;
+      }
+      &:hover {
+        background: $secondaryColor;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }

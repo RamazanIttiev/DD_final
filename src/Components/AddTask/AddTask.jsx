@@ -33,6 +33,13 @@ const AddTask = ({ closeModal }) => {
 
   const id = uuidv4();
 
+  // React.useEffect(() => {
+  //   const userId = store.tasks.tasks.map(item => {
+  //     return item.userId;
+  //   });
+  //   console.log(userId);
+  // }, []);
+
   const initialValues = {
     task: {
       id: id,
@@ -60,7 +67,6 @@ const AddTask = ({ closeModal }) => {
   };
 
   const addNewTask = values => {
-    console.log(values.messages);
     store.tasks.addTask(values.task);
 
     values.messages.map(item => {

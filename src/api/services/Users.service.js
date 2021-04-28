@@ -4,7 +4,11 @@ export class UsersService {
     this.request = instance;
   }
 
-  getUsersDB() {
-    return this.request.get('/users');
+  getUsersDB(data) {
+    console.log(data);
+    if (data === undefined) {
+      return this.request.get('/users');
+    }
+    return this.request.get(`/users/${data}`);
   }
 }

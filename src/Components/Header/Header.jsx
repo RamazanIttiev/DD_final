@@ -7,14 +7,22 @@ import store from '../../state';
 
 const Header = observer(() => {
   const users = store.users.users;
+  console.log(users);
+  // const selectUser = user => {
+  //   store.users.getUsers(user);
+  // };
 
   return (
     <div className="Header">
       <Search />
       <img src={Bell} alt="notification" />
-      <select name="users">
+      <select name="users" onChange={() => store.users.getUsers(1)}>
         {users.map(user => {
-          return <option value={user.name}>{user.name}</option>;
+          return (
+            <option key={user.id} value={user.name}>
+              {user.name}
+            </option>
+          );
         })}
       </select>
     </div>

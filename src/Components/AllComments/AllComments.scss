@@ -1,6 +1,17 @@
 @import '../../Styles/helpers.scss';
 
 .AllComments {
-  margin-top: 60px;
-  max-width: 290px;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+
+  &__text {
+    @include extraFont;
+    width: 290px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
 }
