@@ -1,11 +1,10 @@
 @import '../../Styles/helpers.scss';
 
 .AllTasks {
-  width: 75%;
+  width: 60%;
   &__wrapper {
     margin-bottom: 40px;
-    min-height: 150px;
-    padding: 0 15px;
+    padding: 0 0 15px 15px;
   }
 
   &__title {
@@ -55,6 +54,28 @@
 
   &__content {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    min-height: 150px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: auto;
+
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c5c5c5;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #cccccc;
+    }
   }
 }

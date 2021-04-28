@@ -15,6 +15,9 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
+  padding: 140px 60px;
+}
+
+.input__error {
+  border: 1px solid #dc3545 !important;
 }

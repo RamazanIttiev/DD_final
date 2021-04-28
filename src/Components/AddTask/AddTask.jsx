@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AddTask.scss';
+import * as Yup from 'yup';
 import cn from 'classnames';
 import store from '../../state';
 import { v4 as uuidv4 } from 'uuid';
@@ -32,13 +33,6 @@ const AddTask = ({ closeModal }) => {
   const [btnValue, setBtnValue] = React.useState('');
 
   const id = uuidv4();
-
-  // React.useEffect(() => {
-  //   const userId = store.tasks.tasks.map(item => {
-  //     return item.userId;
-  //   });
-  //   console.log(userId);
-  // }, []);
 
   const initialValues = {
     task: {
@@ -94,18 +88,31 @@ const AddTask = ({ closeModal }) => {
   return (
     <div className={cn(classes.Modal, 'AddTask')}>
       <h1 className="AddTask__title">Add your new task</h1>
-      <Formik initialValues={initialValues} onSubmit={addNewTask}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={addNewTask}
+        validationSchema={Yup.object().shape({
+          task: Yup.object().shape({
+            title: Yup.string()
+              .required('You forgot to write your task')
+              .min(6, 'That is it? Write at least 1 word)'),
+          }),
+        })}
+      >
         {({ errors, touched, isValidating }) => (
           <Form className="AddTask__form">
             <Field
-              className="AddTask__textarea"
+              className={cn(
+                'AddTask__textarea',
+                errors.task && touched.task ? 'text-input error' : '',
+              )}
               as="textarea"
               id="Task"
               name="task.title"
               placeholder="Write your task"
               validate={validateTitle}
             />
-            {errors.title && touched.title && <div>{errors.title}</div>}
+            {/* {errors.task && touched.task && <div className="validation">{errors.task.title}</div>} */}
 
             <div className="AddTask__radioGroup">
               <label

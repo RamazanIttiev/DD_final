@@ -4,9 +4,30 @@
   position: absolute;
   right: 0;
   height: 100%;
+  padding-right: 10px;
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+
+  &::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
+  }
 
   &__text {
     @include extraFont;
