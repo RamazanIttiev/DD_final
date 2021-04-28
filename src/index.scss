@@ -1,4 +1,5 @@
-@import './Styles/normalize';
+@import './styles/normalize';
+@import './styles/helpers';
 
 body {
   margin: 0;
@@ -19,5 +20,16 @@ code {
 }
 
 .input__error {
-  border: 1px solid #dc3545 !important;
+  border: 2px solid #dc3545;
+}
+
+.validation {
+  padding-left: 10px;
+  color: #dc3545;
+}
+
+.EmptyContent__text {
+  @include extraFont;
+
+  letter-spacing: 1px;
 }

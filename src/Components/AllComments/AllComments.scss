@@ -1,4 +1,4 @@
-@import '../../Styles/helpers.scss';
+@import '../../styles/helpers.scss';
 
 .AllComments {
   position: absolute;
@@ -27,12 +27,5 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: #cccccc;
-  }
-
-  &__text {
-    @include extraFont;
-    width: 290px;
-    text-align: center;
-    letter-spacing: 1px;
   }
 }

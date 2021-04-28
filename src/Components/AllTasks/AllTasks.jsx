@@ -3,7 +3,7 @@ import React from 'react';
 import store from '../../state';
 import Task from '../Task/Task';
 import './AllTasks.scss';
-import api from '../../api';
+import cn from 'classnames';
 import AddTask from '../AddTask/AddTask';
 import { Button, Modal } from '@material-ui/core';
 
@@ -37,6 +37,22 @@ const Completed = observer(() => {
     }
     return text_forms[0];
   };
+
+  const emptyContent = () => {
+    let emptyArr = [];
+    for (let i = 0; i < 2; i++) {
+      emptyArr.push(
+        <div className="AllTasks__emptyContent">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>,
+      );
+    }
+    return emptyArr;
+  };
+
   return (
     <div className="AllTasks">
       <div className="AllTasks__heading">
@@ -52,17 +68,21 @@ const Completed = observer(() => {
       <div className="AllTasks__wrapper">
         <span className="AllTasks__title">OnHold</span>
         <div className="AllTasks__content">
-          {store.tasks.onHold.map(item => {
-            return <Task {...item} />;
-          })}
+          {store.tasks.onHold.length !== 0
+            ? store.tasks.onHold.map(item => {
+                return <Task {...item} />;
+              })
+            : emptyContent()}
         </div>
       </div>
       <div className="AllTasks__wrapper">
         <span className="AllTasks__title">Completed</span>
         <div className="AllTasks__content">
-          {store.tasks.completed.map(item => {
-            return <Task {...item} />;
-          })}
+          {store.tasks.completed.length !== 0
+            ? store.tasks.completed.map(item => {
+                return <Task {...item} />;
+              })
+            : emptyContent()}
         </div>
       </div>
     </div>

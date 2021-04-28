@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
-    "server": "json-server --watch db.json --host 127.0.0.1"
+    "server": "json-server --watch db.json --port 8080 --host 127.0.0.1"
   },
   "eslintConfig": {
     "extends": [

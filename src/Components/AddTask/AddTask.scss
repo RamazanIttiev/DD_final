@@ -1,4 +1,4 @@
-@import '../../Styles/helpers';
+@import '../../styles/helpers';
 
 .AddTask {
   padding: 20px;
@@ -15,16 +15,17 @@
   &__textarea {
     @include textarea;
     min-height: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   &__comment {
     min-height: 150px;
+    margin-bottom: 30px;
   }
   &__radioGroup {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 25px 0;
   }
   &__radioLabel {
     @include extraFont;

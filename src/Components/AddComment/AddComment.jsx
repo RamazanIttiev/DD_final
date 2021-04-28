@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, makeStyles, TextField } from '@material-ui/core';
+import './AddComment.scss';
+import * as Yup from 'yup';
+import cn from 'classnames';
 import store from '../../state';
 import { v4 as uuidv4 } from 'uuid';
+import { Button, makeStyles } from '@material-ui/core';
 import { Field, FieldArray, Form, Formik } from 'formik';
-import './AddComment.scss';
 
 const useStyles = makeStyles(() => ({
   Modal: {
@@ -27,17 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const AddComment = ({
-  title,
-  status,
-  importance,
-  completed,
-  userId,
-  id,
-  comments,
-  closePopover,
-  closeModal,
-}) => {
+const AddComment = ({ title, status, importance, id, closePopover, closeModal }) => {
   const classes = useStyles();
 
   const initialValues = {
@@ -73,14 +65,29 @@ const AddComment = ({
           <span className="AddComment__importance">{importance}</span>
         </div>
       </div>
-      <Formik initialValues={initialValues} onSubmit={sendComment}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={sendComment}
+        validationSchema={Yup.object().shape({
+          messages: Yup.array().of(
+            Yup.object().shape({
+              text: Yup.string()
+                .required('You forgot to write your comment')
+                .min(6, 'That is it? Write at least 1 word)'),
+            }),
+          ),
+        })}
+      >
         {({ errors, touched, isValidating }) => (
           <Form className="AddComment__form">
             <FieldArray
               render={() =>
                 initialValues.messages.map((text, index) => (
                   <Field
-                    className="AddComment__textarea AddComment__comment"
+                    className={cn(
+                      'AddComment__textarea AddComment__comment',
+                      touched.task && errors.task && 'input__error',
+                    )}
                     as="textarea"
                     key={index}
                     placeholder="Comment it, if you wish"
@@ -89,6 +96,9 @@ const AddComment = ({
                 ))
               }
             />
+            {errors.messages && touched.messages && (
+              <div className="validation">{errors.messages.map(item => item.text)}</div>
+            )}
 
             <Button className={classes.ModalBtn} type="submit">
               Add

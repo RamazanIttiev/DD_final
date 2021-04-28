@@ -1,7 +1,8 @@
 .Header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50% 35% 10%;
   align-items: center;
+  justify-content: space-between;
   img {
     cursor: pointer;
   }

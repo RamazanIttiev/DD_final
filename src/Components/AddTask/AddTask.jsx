@@ -77,14 +77,6 @@ const AddTask = ({ closeModal }) => {
     closeModal();
   };
 
-  function validateTitle(value) {
-    let error;
-    if (!value) {
-      error = 'Required';
-    }
-    return error;
-  }
-
   return (
     <div className={cn(classes.Modal, 'AddTask')}>
       <h1 className="AddTask__title">Add your new task</h1>
@@ -102,17 +94,13 @@ const AddTask = ({ closeModal }) => {
         {({ errors, touched, isValidating }) => (
           <Form className="AddTask__form">
             <Field
-              className={cn(
-                'AddTask__textarea',
-                errors.task && touched.task ? 'text-input error' : '',
-              )}
+              className={cn('AddTask__textarea', touched.task && errors.task && 'input__error')}
               as="textarea"
               id="Task"
               name="task.title"
               placeholder="Write your task"
-              validate={validateTitle}
             />
-            {/* {errors.task && touched.task && <div className="validation">{errors.task.title}</div>} */}
+            {errors.task && touched.task && <div className="validation">{errors.task.title}</div>}
 
             <div className="AddTask__radioGroup">
               <label

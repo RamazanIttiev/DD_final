@@ -63,6 +63,6 @@ class API {
   }
 }
 
-const api = new API('http://localhost:3000');
+const api = new API('http://localhost:8080');
 
 export default api;
