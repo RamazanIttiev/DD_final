@@ -1,7 +1,7 @@
 @import '../../styles/helpers.scss';
 
 .AllTasks {
-  width: 60%;
+  width: 65%;
   &__wrapper {
     margin-bottom: 40px;
     padding: 0 0 15px 15px;
@@ -117,6 +117,20 @@
         height: 30px;
         background: lightgray;
         border-radius: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .AllTasks {
+    &__heading {
+      h1 {
+        font-size: 28px;
+      }
+      button {
+        width: 125px;
+        height: 30px;
       }
     }
   }

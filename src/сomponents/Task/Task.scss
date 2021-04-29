@@ -5,6 +5,7 @@
   grid-template-columns: 45% 12% 10% 5% 5%;
   align-items: center;
   justify-content: space-between;
+  margin-top: 20px;
 
   &__completed {
     opacity: 0.5;
@@ -15,7 +16,6 @@
     padding-left: 15px;
     word-break: break-all;
     line-height: 1.5;
-    margin-top: 20px;
 
     &:before {
       @include taskBefore;
@@ -48,6 +48,8 @@
   &__user {
     width: 20px;
     height: 20px;
+    border: none;
+    border-radius: 50%;
   }
   &__users {
     width: 22px;
@@ -81,5 +83,11 @@
       width: 20px;
       height: 20px;
     }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Task {
+    grid-template-columns: 45% 20% 10% 5% 5%;
   }
 }

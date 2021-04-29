@@ -78,16 +78,13 @@ const AddTask = ({ closeModal }) => {
   const addNewTask = values => {
     store.tasks.addTask(values.task);
 
-    values.messages.map(item => {
-      if (item.text !== '') {
-        values.comments.map(commetBlock => {
-          commetBlock.taskTitle = values.task.title;
-          store.comments.addComment(commetBlock);
-          values.messages.map(message => {
-            store.comments.addMessage(message);
-          });
-        });
-      }
+    values.messages.map(message => {
+      values.comments.map(commetBlock => {
+        commetBlock.taskTitle = values.task.title;
+        store.comments.addComment(commetBlock);
+
+        store.comments.addMessage(message);
+      });
     });
     closeModal();
   };

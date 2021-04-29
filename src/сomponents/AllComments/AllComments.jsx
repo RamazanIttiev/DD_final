@@ -3,7 +3,6 @@ import Comment from '../Comment/Comment';
 import './AllComments.scss';
 import { observer } from 'mobx-react';
 import store from '../../state';
-import api from '../../api';
 
 const AllComments = observer(() => {
   const comments = store.comments.comments;

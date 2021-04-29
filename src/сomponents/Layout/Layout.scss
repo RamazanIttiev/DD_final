@@ -1,10 +1,17 @@
 @import '../../styles/helpers.scss';
 
 .Layout {
-  display: flex;
+  display: grid;
+  grid-template-columns: 70% 25%;
+  align-items: center;
   justify-content: space-between;
-  align-items: baseline;
   padding: 0 20px;
   margin-top: 60px;
   position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .Layout {
+    grid-template-columns: 58% 38%;
+  }
 }

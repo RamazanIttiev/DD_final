@@ -31,13 +31,33 @@ const useStyles = makeStyles(() => ({
 
 const AddComment = ({ title, status, importance, id, closePopover, closeModal }) => {
   const classes = useStyles();
+  const users = store.users.users;
+
+  let usersName = '';
+  let usersAvatar = '';
+
+  users.map(({ avatar, name }) => {
+    usersName = name;
+    usersAvatar = avatar;
+
+    return usersName, usersAvatar;
+  });
 
   const initialValues = {
     task: {
       taskTitle: title,
-      taskId: id,
-      id: uuidv4(),
+      id: id,
     },
+
+    comments: [
+      {
+        usersName: usersName,
+        usersAvatar: usersAvatar,
+        taskId: id,
+        id: uuidv4(),
+      },
+    ],
+
     messages: [
       {
         taskId: id,
@@ -49,7 +69,11 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
 
   const sendComment = values => {
     values.messages.map(message => {
-      store.comments.addMessage(message);
+      values.comments.map(commetBlock => {
+        commetBlock.taskTitle = values.task.taskTitle;
+
+        store.comments.addMessage(message);
+      });
     });
 
     closeModal();
