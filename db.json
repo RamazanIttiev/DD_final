@@ -1,16 +1,58 @@
 {
   "tasks": [
-   
+    {
+      "id": "33921d5a-4cd3-46c5-8543-ce4b084d723c",
+      "usersId": 1,
+      "usersAvatar": "./public/assets/avatar.png",
+      "title": "sssasasas",
+      "completed": false,
+      "status": "Pending",
+      "importance": "Minor"
+    },
+    {
+      "id": "b3a9ce10-765c-4a52-839e-3ae0e86f9f17",
+      "usersId": 1,
+      "usersAvatar": "./public/images/avatar.png",
+      "title": "aaaaaaaaaaaa",
+      "completed": false,
+      "status": "Pending",
+      "importance": "Minor"
+    },
+    {
+      "id": "c2316913-73d5-412a-8825-ef122d37d472",
+      "usersId": 1,
+      "usersAvatar": "/public/images/avatar.png",
+      "title": "aaaaaaaa",
+      "completed": false,
+      "status": "Pending",
+      "importance": "Minor"
+    },
+    {
+      "id": "b997455f-5748-4474-8d13-83592cd66226",
+      "usersId": 1,
+      "usersAvatar": "public/images/avatar.png",
+      "title": "aaaaaaaaaaa",
+      "completed": false,
+      "status": "Pending",
+      "importance": "Minor"
+    },
+    {
+      "id": "e44cb2fe-a894-4ab1-ab88-4fbf43924592",
+      "usersId": 1,
+      "usersAvatar": "http://localhost:3001/images/avatar.png",
+      "title": "aaaaaaaaaa",
+      "completed": false,
+      "status": "Pending",
+      "importance": "Minor"
+    }
   ],
   "comments": [],
-  "messages": [
-    
-  ],
+  "messages": [],
   "users": [
     {
       "name": "Ramazan",
       "id": 1,
-      "avatar": "https://github.com/RamazanIttiev/dd_final/blob/9cc4029b3c836cd13c610daeb51cd8cf9fd7644a/src/assets/img/avatar.png"
+      "avatar": "http://localhost:3001/images/avatar.png"
     }
   ]
 }

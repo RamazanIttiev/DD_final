@@ -15,7 +15,7 @@ const Task = observer(props => {
   const [popover, setPopover] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const { title, status, importance, completed, usersAvatar, id } = props;
-
+  console.log(usersAvatar);
   const openModal = () => {
     setOpen(true);
   };
@@ -57,9 +57,8 @@ const Task = observer(props => {
           {status}
         </button>
         <div className="Task__importance">{importance}</div>
-        <div className="Task__user">
-          <img src={usersAvatar} alt="" />
-        </div>
+        <img className="Task__user" src={usersAvatar} alt="" />
+
         <div className="Task__menu" onClick={openPopover}>
           <div></div>
           <div></div>
