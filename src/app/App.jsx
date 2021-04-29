@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
 import store from '../state';
-import Header from '../components/Header/Header';
-import Layout from '../components/Layout/Layout';
+import Header from '../сomponents/Header/Header.jsx';
+import Layout from '../сomponents/Layout/Layout.jsx';
 import { observer } from 'mobx-react';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Comment.scss';
-import avatar from '../../assets/img/avatar.png';
 import store from '../../state';
 
 const Comment = props => {
