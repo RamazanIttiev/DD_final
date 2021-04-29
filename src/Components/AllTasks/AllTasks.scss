@@ -86,13 +86,13 @@
     margin-bottom: 45px;
     span {
       &:first-child {
-        width: 350px;
+        width: 200px;
         height: 15px;
         background: lightgray;
         border-radius: 10px;
         &:after {
           content: '';
-          width: 200px;
+          width: 150px;
           height: 15px;
           background: lightgray;
           border-radius: 10px;

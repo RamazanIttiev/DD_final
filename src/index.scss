@@ -24,6 +24,7 @@ code {
 }
 
 .validation {
+  @include extraFont;
   padding-left: 10px;
   color: #dc3545;
 }

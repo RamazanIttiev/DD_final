@@ -42,7 +42,10 @@
   &__textarea {
     @include textarea;
     min-height: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     min-height: 150px;
+  }
+  &__validation {
+    margin-bottom: 30px;
   }
 }

@@ -1,9 +1,28 @@
+@import '../../styles/helpers';
+
 .Header {
   display: grid;
   grid-template-columns: 50% 35% 10%;
   align-items: center;
   justify-content: space-between;
+
   img {
     cursor: pointer;
+  }
+  &__notification {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      right: 1px;
+      width: 8px;
+      height: 8px;
+      background: #eb5757;
+      border-radius: 50%;
+      border: 1px solid #fff;
+    }
   }
 }

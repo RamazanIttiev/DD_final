@@ -31,21 +31,36 @@ const useStyles = makeStyles(() => ({
 const AddTask = ({ closeModal }) => {
   const classes = useStyles();
   const [btnValue, setBtnValue] = React.useState('');
+  const users = store.users.users;
+
+  let usersName = '';
+  let usersAvatar = '';
+  let usersId = '';
+
+  users.map(({ avatar, id, name }) => {
+    usersName = name;
+    usersAvatar = avatar;
+    usersId = id;
+    return usersName, usersAvatar, usersId;
+  });
 
   const id = uuidv4();
 
   const initialValues = {
     task: {
       id: id,
-      // userId: [],
+      usersId: usersId,
+      usersAvatar: usersAvatar,
       title: '',
       completed: false,
-      status: 'pending',
+      status: 'Pending',
       importance: 'Minor',
     },
 
     comments: [
       {
+        usersName: usersName,
+        usersAvatar: usersAvatar,
         taskId: id,
         id: uuidv4(),
       },

@@ -5,7 +5,6 @@ export class TasksService {
   }
 
   getTasksDB(data) {
-    console.log(data);
     if (data === undefined) {
       return this.request.get(`/tasks`);
     }

@@ -4,18 +4,18 @@ import avatar from '../../assets/img/avatar.png';
 import store from '../../state';
 
 const Comment = props => {
-  const { taskTitle, id, userId } = props.userComment;
+  const { taskTitle, id, usersName, usersAvatar } = props.userComment;
   let commentTime = new Date();
 
   return (
     <div className="Comment" key={id}>
       <div className="Comment__heading">
         <div className="Comment__avatar">
-          <img src={avatar} alt="" />
+          <img src={usersAvatar} alt="" />
         </div>
         <div className="Comment__wrapper">
           <div className="Comment__title">
-            <span className="Comment__name">Alena Curtis</span>
+            <span className="Comment__name">{usersName}</span>
             <span className="Comment__date">- {commentTime.toLocaleString()}</span>
           </div>
           <span className="Comment__task">{taskTitle}</span>

@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import api from '../api';
 
 class UsersState {
-  users = [];
+  users = {};
 
   constructor() {
     makeAutoObservable(this);

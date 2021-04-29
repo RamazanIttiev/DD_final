@@ -35,8 +35,24 @@ class TasksState {
 
   async toggleComplete(id) {
     const item = this.tasks.find(({ id: _id }) => _id === id);
-
+    console.log(item);
     item.completed = !item.completed;
+    item.status = 'Completed';
+
+    if (!item.completed && item.status === 'Completed') {
+      item.status = 'Pending';
+    }
+
+    await api.tasks.changeStatus(item);
+    await this.getTasks();
+  }
+
+  async toggleStatus(id) {
+    const item = this.tasks.find(({ id: _id }) => _id === id);
+
+    if (!item.completed && item.status === 'Pending') {
+      item.status = 'In Progress';
+    }
 
     await api.tasks.changeStatus(item);
     await this.getTasks();

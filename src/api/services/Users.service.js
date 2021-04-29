@@ -5,7 +5,6 @@ export class UsersService {
   }
 
   getUsersDB(data) {
-    console.log(data);
     if (data === undefined) {
       return this.request.get('/users');
     }

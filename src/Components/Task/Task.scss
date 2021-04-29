@@ -2,7 +2,7 @@
 
 .Task {
   display: grid;
-  grid-template-columns: 50% 15% 10% 5%;
+  grid-template-columns: 45% 12% 10% 5% 5%;
   align-items: center;
   justify-content: space-between;
 
@@ -27,6 +27,7 @@
 
   &__status {
     @include status;
+    border: none;
   }
 
   &__statusInprogress {
@@ -44,7 +45,12 @@
   &__importance {
     @include importance;
   }
-
+  &__user {
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
   &__users {
     width: 22px;
     height: 22px;

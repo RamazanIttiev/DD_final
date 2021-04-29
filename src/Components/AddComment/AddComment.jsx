@@ -86,7 +86,7 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
                   <Field
                     className={cn(
                       'AddComment__textarea AddComment__comment',
-                      touched.task && errors.task && 'input__error',
+                      touched.messages && errors.messages && 'input__error',
                     )}
                     as="textarea"
                     key={index}
@@ -97,7 +97,9 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
               }
             />
             {errors.messages && touched.messages && (
-              <div className="validation">{errors.messages.map(item => item.text)}</div>
+              <div className="validation AddComment__validation">
+                {errors.messages.map(item => item.text)}
+              </div>
             )}
 
             <Button className={classes.ModalBtn} type="submit">
