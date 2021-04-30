@@ -33,6 +33,10 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
   const classes = useStyles();
   const users = store.users.users;
 
+  let date = new Date();
+
+  let commentTime = date.toLocaleTimeString();
+
   let usersName = '';
   let usersAvatar = '';
 
@@ -53,6 +57,7 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
       {
         usersName: usersName,
         usersAvatar: usersAvatar,
+        created_at: commentTime,
         taskId: id,
         id: uuidv4(),
       },
@@ -71,8 +76,10 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
     values.messages.map(message => {
       return values.comments.map(commetBlock => {
         commetBlock.taskTitle = values.task.taskTitle;
-
-        return store.comments.addMessage(message);
+        if (message.text) {
+          store.comments.addComment(commetBlock);
+          store.comments.addMessage(message);
+        }
       });
     });
 
