@@ -76,10 +76,10 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
     values.messages.map(message => {
       return values.comments.map(commetBlock => {
         commetBlock.taskTitle = values.task.taskTitle;
-        if (message.text) {
-          store.comments.addComment(commetBlock);
-          store.comments.addMessage(message);
-        }
+        // if (message.text) {
+        // store.comments.addComment(commetBlock);
+        store.comments.addMessage(message);
+        // }
       });
     });
 
