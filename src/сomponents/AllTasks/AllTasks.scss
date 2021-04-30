@@ -137,6 +137,9 @@
 
 @media screen and (max-width: 768px) {
   .AllTasks {
+    &__wrapper {
+      padding: 0;
+    }
     &__heading {
       h1 {
         font-size: 25px;
