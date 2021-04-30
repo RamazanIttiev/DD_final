@@ -85,8 +85,17 @@ const AddTask = ({ closeModal }) => {
     values.messages.map(message => {
       return values.comments.map(commetBlock => {
         commetBlock.taskTitle = values.task.title;
-        store.comments.addComment(commetBlock);
-        store.comments.addMessage(message);
+        if (message.text !== '') {
+          store.comments.addComment(commetBlock);
+          store.comments.addMessage(message);
+        }
+
+        // хотел реализовать логику, чтоб коментарии не добавлялись повторно, но не вышло (
+        if (
+          store.comments.comments.filter(item => item.taskId !== values.comments.taskId).length > 0
+        ) {
+          store.comments.addMessage(message);
+        }
       });
     });
     closeModal();

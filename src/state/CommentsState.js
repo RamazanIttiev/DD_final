@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import store from '.';
 import api from '../api';
 
 class CommentsState {
@@ -18,7 +19,12 @@ class CommentsState {
   }
 
   async addComment(data) {
-    await api.comments.postCommentDB(data);
+    let result = this.comments.filter(e => e.taskId !== data.taskId).length > 0;
+
+    if (this.comments.length === 0 || result) {
+      await api.comments.postCommentDB(data);
+    }
+
     await this.getComments();
   }
 
