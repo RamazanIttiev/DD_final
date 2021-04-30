@@ -115,3 +115,21 @@ $messageBgr: #f3f3f3;
     top: 2px;
   }
 }
+
+@mixin avatar {
+  position: relative;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  margin-right: 25px;
+  border: 3px solid $avatarBorder;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+  }
+}

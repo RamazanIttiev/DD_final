@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './AddTask.scss';
 import * as Yup from 'yup';
 import cn from 'classnames';
@@ -79,10 +79,9 @@ const AddTask = ({ closeModal }) => {
     store.tasks.addTask(values.task);
 
     values.messages.map(message => {
-      values.comments.map(commetBlock => {
+      return values.comments.map(commetBlock => {
         commetBlock.taskTitle = values.task.title;
         store.comments.addComment(commetBlock);
-
         store.comments.addMessage(message);
       });
     });

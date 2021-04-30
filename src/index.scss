@@ -34,3 +34,9 @@ code {
 
   letter-spacing: 1px;
 }
+
+@media screen and (max-width: 768px) {
+  #app {
+    padding: 75px 30px;
+  }
+}

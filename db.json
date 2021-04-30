@@ -1,67 +1,12 @@
 {
-  "tasks": [
-    {
-      "id": "10c245aa-b9ff-49b1-96e6-727ef872d35d",
-      "usersId": 1,
-      "usersAvatar": "http://localhost:3001/images/avatar.png",
-      "title": "aaaaaaaaa",
-      "completed": false,
-      "status": "Pending",
-      "importance": "Minor"
-    },
-    {
-      "id": "d304ff2c-9c27-45f9-8827-0eeac0a54204",
-      "usersId": 1,
-      "usersAvatar": "http://localhost:3001/images/avatar.png",
-      "title": "aaaaaaaaaaaaa",
-      "completed": false,
-      "status": "Pending",
-      "importance": "Minor"
-    }
-  ],
-  "comments": [
-    {
-      "usersName": "Ramazan",
-      "usersAvatar": "http://localhost:3001/images/avatar.png",
-      "taskId": "10c245aa-b9ff-49b1-96e6-727ef872d35d",
-      "id": "0c5ad84f-d5cd-440c-b1ca-173549324db0",
-      "taskTitle": "aaaaaaaaa"
-    },
-    {
-      "usersName": "Ramazan",
-      "usersAvatar": "http://localhost:3001/images/avatar.png",
-      "taskId": "d304ff2c-9c27-45f9-8827-0eeac0a54204",
-      "id": "bed60199-3cd1-414f-8dd5-feafd52a8fa7",
-      "taskTitle": "aaaaaaaaaaaaa"
-    }
-  ],
-  "messages": [
-    {
-      "taskId": "10c245aa-b9ff-49b1-96e6-727ef872d35d",
-      "text": "aaaaaaaaaa",
-      "id": "9dac5a68-750b-4062-bd36-8fe11e84955f"
-    },
-    {
-      "taskId": "10c245aa-b9ff-49b1-96e6-727ef872d35d",
-      "id": "c709c2e0-2428-4ac7-bc9f-444e32dce963",
-      "text": "aaaaaaaaaa"
-    },
-    {
-      "taskId": "d304ff2c-9c27-45f9-8827-0eeac0a54204",
-      "text": "",
-      "id": "f4dbe1f6-5770-4c25-968b-daf66f28c1d7"
-    },
-    {
-      "taskId": "d304ff2c-9c27-45f9-8827-0eeac0a54204",
-      "id": "d0d4ac86-153c-4ec3-9f61-7fbfba6fe86c",
-      "text": "aaaaaaaaaaaaaa"
-    }
-  ],
+  "tasks": [],
+  "comments": [],
+  "messages": [],
   "users": [
     {
       "name": "Ramazan",
-      "id": 1,
-      "avatar": "http://localhost:3001/images/avatar.png"
+      "id": "1",
+      "avatar": "http://localhost:3001/images/avatar.jpg"
     }
   ]
 }

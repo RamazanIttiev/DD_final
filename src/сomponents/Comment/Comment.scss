@@ -19,21 +19,7 @@
     margin-bottom: 5px;
   }
   &__avatar {
-    position: relative;
-    width: 37px;
-    height: 37px;
-    border-radius: 50%;
-    margin-right: 25px;
-    border: 3px solid $avatarBorder;
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      border: 1px solid #fff;
-    }
+    @include avatar;
   }
   &__name {
     @include secondaryFont;
@@ -52,6 +38,7 @@
     word-break: break-word;
     display: block;
   }
+
   &__message {
     @include extraFont;
     font-size: 12px;
@@ -64,5 +51,28 @@
     &:not(:last-child) {
       margin-bottom: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Comment {
+    width: 200px;
+    &__wrapper {
+      width: auto;
+    }
+    &__heading {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    &__message {
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Comment {
+    width: 220px;
+    margin: 20px;
   }
 }

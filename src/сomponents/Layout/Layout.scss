@@ -2,7 +2,7 @@
 
 .Layout {
   display: grid;
-  grid-template-columns: 70% 25%;
+  grid-template-columns: 60% 35%;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
@@ -10,8 +10,9 @@
   position: relative;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 768px) {
   .Layout {
-    grid-template-columns: 58% 38%;
+    grid-template-columns: 100%;
+    padding: 0;
   }
 }

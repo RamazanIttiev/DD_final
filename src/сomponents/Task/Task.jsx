@@ -15,7 +15,7 @@ const Task = observer(props => {
   const [popover, setPopover] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const { title, status, importance, completed, usersAvatar, id } = props;
-  console.log(usersAvatar);
+
   const openModal = () => {
     setOpen(true);
   };

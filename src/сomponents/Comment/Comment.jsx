@@ -28,6 +28,7 @@ const Comment = props => {
             </span>
           );
         }
+        return '';
       })}
     </div>
   );

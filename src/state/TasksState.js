@@ -35,7 +35,7 @@ class TasksState {
 
   async toggleComplete(id) {
     const item = this.tasks.find(({ id: _id }) => _id === id);
-    console.log(item);
+
     item.completed = !item.completed;
     item.status = 'Completed';
 

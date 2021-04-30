@@ -69,10 +69,10 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
 
   const sendComment = values => {
     values.messages.map(message => {
-      values.comments.map(commetBlock => {
+      return values.comments.map(commetBlock => {
         commetBlock.taskTitle = values.task.taskTitle;
 
-        store.comments.addMessage(message);
+        return store.comments.addMessage(message);
       });
     });
 

@@ -17,7 +17,11 @@ const Search = observer(() => {
   let searchForPartner = task => {
     if (task) {
       store.tasks.getTasks(task);
-    } else store.tasks.getTasks();
+      store.comments.getComments(task);
+    } else {
+      store.tasks.getTasks();
+      store.comments.getComments();
+    }
   };
 
   searchForPartner = debounce(searchForPartner, 400);

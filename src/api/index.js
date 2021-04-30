@@ -22,36 +22,25 @@ class API {
   }
 
   setInterceptors() {
-    // Делаем перехват запроса
     this.request.interceptors.request.use(config => {
-      // Модифицируем список запросов (условный)
       this.requestList.push(config);
-      // Задаем значение прелодера
       store.preloader.setPreloader(true);
       return config;
     });
 
-    // Получаем data из объекта результата
     this.request.interceptors.response.use(this.clearData);
 
-    // Перехватываем ответ
     this.request.interceptors.response.use(
-      // Секция resolve (ok)
       res => {
-        // Модифицируем список запросов (условный)
         this.requestList.pop();
 
-        // Задаем значение прелодера
         store.preloader.setPreloader(!!this.requestList.length);
 
         return res;
       },
-      // Секция reject (error)
       err => {
-        // Очищаем список
         this.requestList = [];
 
-        // Вырубаем прелодер
         store.preloader.setPreloader(false);
         return err;
       },

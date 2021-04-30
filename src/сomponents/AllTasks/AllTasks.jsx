@@ -3,7 +3,6 @@ import React from 'react';
 import store from '../../state';
 import Task from '../Task/Task';
 import './AllTasks.scss';
-import cn from 'classnames';
 import AddTask from '../AddTask/AddTask';
 import { Button, Modal } from '@material-ui/core';
 
@@ -42,7 +41,7 @@ const Completed = observer(() => {
     let emptyArr = [];
     for (let i = 0; i < 2; i++) {
       emptyArr.push(
-        <div className="AllTasks__emptyContent">
+        <div className="AllTasks__emptyContent" key={i}>
           <span></span>
           <span></span>
           <span></span>

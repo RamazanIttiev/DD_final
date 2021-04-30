@@ -9,35 +9,17 @@ const Header = observer(() => {
   const users = store.users.users;
   const messages = store.comments.messages;
 
-  let usersArr = [];
-  // if (typeof users === 'object') {
-  //   usersArr.push(users);
-  //   return usersArr;
-  // }
-
-  const selectUser = user => {
-    store.users.getUsers(user);
-  };
-
   return (
     <div className="Header">
       <Search />
-      <div className={messages.length !== 0 && 'Header__notification'}>
-        <img src={Bell} alt="notification" />
+      <div className="Header__wrapper">
+        <div className={messages.length !== 0 && 'Header__notification'}>
+          <img src={Bell} alt="notification" />
+        </div>
+        {users.map(user => {
+          return <img className="Header__avatar" src={user.avatar} alt={user.name} key={user.id} />;
+        })}
       </div>
-      <select name="users" onChange={() => store.users.getUsers(1)}>
-        <option key={users.id} value={users.name}>
-          {users.name}
-        </option>
-
-        {/* {users.map(user => {
-          return (
-            <option key={user.id} value={user.name}>
-              {user.name}
-            </option>
-          );
-        })} */}
-      </select>
     </div>
   );
 });

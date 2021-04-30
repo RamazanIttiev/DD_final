@@ -4,8 +4,11 @@ export class CommentsService {
     this.request = instance;
   }
 
-  getCommentsDB() {
-    return this.request.get('/comments');
+  getCommentsDB(data) {
+    if (data === undefined) {
+      return this.request.get(`/comments`);
+    }
+    return this.request.get(`/comments/?taskTitle_like=${data}`);
   }
 
   getMessagesDB() {

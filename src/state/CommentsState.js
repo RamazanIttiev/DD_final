@@ -9,8 +9,8 @@ class CommentsState {
     makeAutoObservable(this);
   }
 
-  async getComments() {
-    return (this.comments = await api.comments.getCommentsDB());
+  async getComments(data) {
+    return (this.comments = await api.comments.getCommentsDB(data));
   }
 
   async getMessages() {
