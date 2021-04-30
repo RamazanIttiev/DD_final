@@ -1,7 +1,37 @@
 {
-  "tasks": [],
-  "comments": [],
-  "messages": [],
+  "tasks": [
+    {
+      "id": "4f655db9-56dc-4b1e-a492-0cad023a7132",
+      "usersId": "1",
+      "usersAvatar": "http://localhost:3001/images/avatar.jpg",
+      "title": "values.comments.",
+      "completed": true,
+      "status": "Completed",
+      "importance": "Minor"
+    }
+  ],
+  "comments": [
+    {
+      "usersName": "Ramazan",
+      "usersAvatar": "http://localhost:3001/images/avatar.jpg",
+      "created_at": "01:01:14",
+      "taskId": "4f655db9-56dc-4b1e-a492-0cad023a7132",
+      "id": "edd2939f-4d24-44fb-b76d-5c0fa1da5921",
+      "taskTitle": "values.comments."
+    }
+  ],
+  "messages": [
+    {
+      "taskId": "4f655db9-56dc-4b1e-a492-0cad023a7132",
+      "id": "e5781440-58f0-4ee7-910c-ebcec18615b5",
+      "text": "values.comments."
+    },
+    {
+      "taskId": "4f655db9-56dc-4b1e-a492-0cad023a7132",
+      "id": "0bb3e1cb-346f-48f1-a2f2-079dbc750f1f",
+      "text": "values.comments."
+    }
+  ],
   "users": [
     {
       "name": "Ramazan",
