@@ -45,6 +45,9 @@ const AddTask = ({ closeModal }) => {
   });
 
   const id = uuidv4();
+  let date = new Date();
+
+  let commentTime = date.toLocaleTimeString();
 
   const initialValues = {
     task: {
@@ -62,6 +65,7 @@ const AddTask = ({ closeModal }) => {
         usersName: usersName,
         usersAvatar: usersAvatar,
         taskId: id,
+        created_at: commentTime,
         id: uuidv4(),
       },
     ],

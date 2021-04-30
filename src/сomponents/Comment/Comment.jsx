@@ -3,8 +3,7 @@ import './Comment.scss';
 import store from '../../state';
 
 const Comment = props => {
-  const { taskTitle, id, usersName, usersAvatar } = props.userComment;
-  let commentTime = new Date();
+  const { taskTitle, id, usersName, usersAvatar, created_at } = props.userComment;
 
   return (
     <div className="Comment" key={id}>
@@ -15,7 +14,7 @@ const Comment = props => {
         <div className="Comment__wrapper">
           <div className="Comment__title">
             <span className="Comment__name">{usersName}</span>
-            <span className="Comment__date">- {commentTime.toLocaleString()}</span>
+            <span className="Comment__date">- {created_at}</span>
           </div>
           <span className="Comment__task">{taskTitle}</span>
         </div>
