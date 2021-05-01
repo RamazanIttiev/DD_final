@@ -72,14 +72,20 @@ const AddComment = ({ title, status, importance, id, closePopover, closeModal })
     ],
   };
 
+  // Не получилось реализовать повторное добавление комментария при отправки из созданного таска,
+  // поэтому оставил так, что можно добавить пустой комментарий
+
   const sendComment = values => {
     values.messages.map(message => {
       return values.comments.map(commetBlock => {
-        commetBlock.taskTitle = values.task.taskTitle;
-        // if (message.text) {
-        // store.comments.addComment(commetBlock);
+        commetBlock.taskTitle = values.task.title;
         store.comments.addMessage(message);
-        // }
+        //   if (values.comments.filter(comment => comment.taskId !== id)) {
+        //     store.comments.addComment(commetBlock);
+        //     store.comments.addMessage(message);
+        //   } else {
+        //     return store.comments.addMessage(message);
+        //   }
       });
     });
 

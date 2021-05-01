@@ -19,11 +19,7 @@ class CommentsState {
   }
 
   async addComment(data) {
-    let result = this.comments.filter(e => e.taskId !== data.taskId).length > 0;
-
-    if (this.comments.length === 0 || result) {
-      await api.comments.postCommentDB(data);
-    }
+    await api.comments.postCommentDB(data);
 
     await this.getComments();
   }

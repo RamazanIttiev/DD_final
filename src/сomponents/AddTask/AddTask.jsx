@@ -79,24 +79,22 @@ const AddTask = ({ closeModal }) => {
     ],
   };
 
+  // Не получилось реализовать повторное добавление комментария при отправки из созданного таска,
+  // поэтому оставил так, что можно добавить пустой комментарий
+  // пробовал метод filter в компоненте AddComment, но не вышло
+
   const addNewTask = values => {
     store.tasks.addTask(values.task);
 
     values.messages.map(message => {
-      return values.comments.map(commetBlock => {
+      // if (message.text !== '') {
+      values.comments.map(commetBlock => {
         commetBlock.taskTitle = values.task.title;
-        if (message.text !== '') {
-          store.comments.addComment(commetBlock);
-          store.comments.addMessage(message);
-        }
+        store.comments.addComment(commetBlock);
 
-        // хотел реализовать логику, чтоб коментарии не добавлялись повторно, но не вышло (
-        if (
-          store.comments.comments.filter(item => item.taskId !== values.comments.taskId).length > 0
-        ) {
-          store.comments.addMessage(message);
-        }
+        store.comments.addMessage(message);
       });
+      // }
     });
     closeModal();
   };
