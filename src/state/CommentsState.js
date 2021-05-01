@@ -1,5 +1,4 @@
 import { makeAutoObservable } from 'mobx';
-import store from '.';
 import api from '../api';
 
 class CommentsState {
